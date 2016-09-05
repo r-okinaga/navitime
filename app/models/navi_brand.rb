@@ -4,6 +4,7 @@ class NaviBrand < ApplicationRecord
     def self.monthly_privider_ranking
         monthly_records = self.monthly_records
         providers = monthly_records.group('provider_name').order('count_all desc').count
+        providers.delete('ナビタイムジャパン')
         providers.select{|key, value| 2 <= value}
     end
 
@@ -17,7 +18,7 @@ class NaviBrand < ApplicationRecord
     def self.monthly_records
         first_day = self.monthly_records_first_day
         last_day = self.monthly_records_last_day
-        NaviBrand.where(open_at: first_day..last_day).order('open_at asc')
+        NaviBrand.where(open_at: first_day..last_day)
     end
 
     #集計期間の最初の日

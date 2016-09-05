@@ -1,0 +1,18 @@
+集計元: https://www.navitime.co.jp/newspot/list
+
+集計期間 <%= @first_day %> ~ <%= @last_day %>
+
+■集計期間のうち 2店以上出店した店舗(ブランド名は推定)
+出店数    ブランド名
+<% @brand_ranking.each do |name, count| %>
+<%= count %>店舗: <%= name %>
+<% end %>
+
+■集計期間のうち 2店以上出店した会社
+出店数   会社名
+<% @provider_ranking.each do |name, count| %>
+<%= count %>店舗: <%= name %>
+<% end %>
+
+※会社名の記載していないデータがあるので,
+正確なリストではありません。
