@@ -13,6 +13,8 @@ set :deploy_to, '/var/www/navitime'
 # Default value for :scm is :git
 set :scm, :git
 
+set :rbenv_ruby, '2.3.1'
+
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
 
