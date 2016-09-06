@@ -3,7 +3,7 @@ lock '3.6.1'
 
 set :application, 'navitime'
 set :repo_url, 'git@github.com:r-okinaga/navitime.git'
-
+set :branch, 'master'
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
