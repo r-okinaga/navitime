@@ -1,6 +1,6 @@
 class NoticeMailer < ApplicationMailer
 
-  default from: 'r-okinaga@gc-story.com'
+  default from: 'crawler.gc-story.local'
 
   def daily_report
     @first_day = NaviBrand.monthly_records_first_day

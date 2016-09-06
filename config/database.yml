@@ -51,4 +51,4 @@ production:
   <<: *default
   database: navitime
   username: navitime
-  password: <%= ENV['NAVITIME_DATABASE_PASSWORD'] %>
+  password:
