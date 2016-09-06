@@ -13,9 +13,11 @@
 ActiveRecord::Schema.define(version: 20160905075647) do
 
   create_table "navi_brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
+    t.string   "original_name"
+    t.string   "brand_name"
     t.string   "provider_name"
     t.string   "store_name"
+    t.string   "kana"
     t.string   "category_name"
     t.integer  "tel_no"
     t.integer  "postal_code"
@@ -23,14 +25,6 @@ ActiveRecord::Schema.define(version: 20160905075647) do
     t.date     "open_at"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-  end
-
-  create_table "stores", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "brand_name"
-    t.string   "store_name"
-    t.date     "open_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end
