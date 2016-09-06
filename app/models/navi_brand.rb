@@ -10,7 +10,7 @@ class NaviBrand < ApplicationRecord
 
     def self.monthly_brand_ranking
         monthly_records = self.monthly_records
-        brands = monthly_records.group('name').order('count_all desc').count
+        brands = monthly_records.group('brand_name').order('count_all desc').count
         brands.select{|key, value| 2 <= value}
     end
 

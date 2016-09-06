@@ -9,7 +9,7 @@ class NoticeMailer < ApplicationMailer
     @brand_ranking = NaviBrand.monthly_brand_ranking
 
     mail(
-        to: 'system@gc-story.com, sign_sales@gc-story.com',
+        to: 'sign_sales@gc-story.com, sys-dev@gc-story.com',
         subject: "NAVITIMEデイリーレポート_" + Date.today.strftime('%Y%m%d')
     )
   end

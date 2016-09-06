@@ -2,6 +2,7 @@ require 'net/http'
 require 'open-uri'
 require 'json'
 require 'date'
+require 'nkf'
 
 #Jsonデータの、どこから表示されるかを指定する数値
 #この2つの数値でその日のデータを網羅できる
@@ -44,24 +45,38 @@ namespace :scrape do
         end
 
         def split_name(str)
-            brand = str.split
+            half = full_to_half(str)
+            normalized = rm_parenthesis(half)
+
+            brand = normalized.split
             brand_name = ''
             store_name = ''
 
             case brand.count
                 when 1
-                    brand_name = str
+                    brand_name = normalized
                 else
                     store_name = brand.pop
-                    brand_name = brand.join
+                    brand_name = brand.join(' ')
             end
             {brand_name: brand_name,
              store_name: store_name}
         end
 
+        #全角 => 半角
+        def full_to_half(str)
+            NKF.nkf('-m0Z0Z4Wwx', str)
+        end
+
+        #括弧で囲まれた部分を除く
+        def rm_parenthesis(str)
+            str.slice!(/\(.+?\)/)
+            str
+        end
+
         [FIRST, SECOND].each do |n|
             today = (Date.today).strftime("%Y-%m-%d")
-            spots = get_items("2016-09-08", n)
+            spots = get_items("2016-09-05", n)
             save_items(spots)
         end
     end
